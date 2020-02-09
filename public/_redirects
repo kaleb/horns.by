@@ -1,0 +1,7 @@
+/.well-known/webfinger resource=:acct /.well-known/webfinger/:acct.json 200
+
+# The following 404 does not seem to actually work
+/.well-known/webfinger resource=:any /.well-known/webfinger/404-not-found.json 404
+
+# webfinger w/o resource query param is bad request
+/.well-known/webfinger /.well-known/webfinger/400-bad-request.json 400

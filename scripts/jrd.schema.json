@@ -1,0 +1,92 @@
+{
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "title": "JRD",
+    "type": "object",
+    "required": ["subject"],
+    "properties": {
+        "subject": {
+            "description": "A URI that identifies the entity that the JRD describes",
+            "type": "string",
+            "format": "uri"
+        },
+        "aliases": {
+            "type": "array",
+            "items": {
+                "description": "A URI string that identifies the same entity as the `subject` URI",
+                "type": "string",
+                "format": "uri"
+            }
+        },
+        "properties": {
+            "description": "Convey additional information about the subject of the JRD.",
+            "type": "object",
+            "propertyNames": {
+                "title": "Property identifier key",
+                "format": "uri"
+            },
+            "additionalProperties": {
+                "title": "Property identifier value",
+                "type": ["string", "null"]
+            }
+        },
+        "links": {
+            "type": "array",
+            "items": {
+                "title": "Link Relation Object",
+                "description": "Represent a link (RFC 5988 Web Linking), the context is the `subject`",
+                "type": "object",
+                "required": ["rel"],
+                "properties": {
+                    "rel": {
+                        "title": "Link Relation Type",
+                        "description": "URI or registered relation type; see: IANA, \"Link Relations\", <http://www.iana.org/assignments/link-relations/>",
+                        "$comment": "TODO: Define link-relation format or regex",
+                        "type": "string",
+                        "anyOf": [{"format": "uri"}, {"format": "link-relation"}]
+                    },
+                    "type": {
+                        "title": "Link Media Type",
+                        "description": "media type of the result of dereferencing the link ought to be; see: IANA, \"MIME Media Types\", <http://www.iana.org/assignments/media-types>",
+                        "type": "string",
+                        "$comment": "TODO: define mediatype custom format or regex",
+                        "format": "mime-type"
+                    },
+                    "href": {
+                        "title": "Link Hypertext Reference Target",
+                        "description": "target URI",
+                        "type": "string",
+                        "format": "uri"
+                    },
+                    "titles": {
+                        "title": "Link Relation Descriptions",
+                        "type": "object",
+                        "propertyNames": {
+                            "title": "Title Language Key",
+                            "description": "Language tag or \"und\"; see: Phillips, A., Ed., and M. Davis, Ed., \"Tags for Identifying Languages\", BCP 47, RFC 5646, September 2009",
+                            "$comment": "TODO: Define language-tag custom format or regex",
+                            "type": "string",
+                            "anyOf": [{"const": "und"}, {"format": "language-tag"}]
+                        },
+                        "additionalProperties": {
+                            "title": "Title Language Value",
+                            "description": "Human-readable description of the link relation",
+                            "type": "string"
+                        }
+                    },
+                    "properties": {
+                        "description": "Convey additional information about the link relation.",
+                        "type": "object",
+                        "propertyNames": {
+                            "title": "Property identifier key",
+                            "format": "uri"
+                        },
+                        "additionalProperties": {
+                            "title": "Property identifier value",
+                            "type": ["string", "null"]
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
