@@ -1,1 +1,1 @@
-{"error": "Bad Request"}
+{"error":"Bad Request","code":400,"subject":"https://horns.by/.well-known/webfinger#400"}

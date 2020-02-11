@@ -4,7 +4,8 @@
   "description": "https://horns.by",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "jsonSchema:validate": "ajv validate -s ./scripts/jrd.schema.json --unknown-formats=link-relation --unknown-formats=mime-type --unknown-formats=language-tag -d ./public/.well-known/webfinger/\\*.json"
   },
   "author": "Kaleb Hornsby <kaleb@horns.by> (http://kaleb.horns.by/)",
   "license": "UNLICENSED",
