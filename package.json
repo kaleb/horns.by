@@ -10,7 +10,7 @@
   "author": "Kaleb Hornsby <kaleb@horns.by> (http://kaleb.horns.by/)",
   "license": "UNLICENSED",
   "devDependencies": {
-    "ajv-cli": "^3.0.0",
-    "netlify-cli": "^2.30.0"
+    "ajv-cli": "^3.1.0",
+    "netlify-cli": "^2.35.0"
   }
 }
